@@ -2,7 +2,6 @@
 
 
 def cantDivisores(numero):
-    
     cantidad = 0
     
     for i in range(1, numero + 1):

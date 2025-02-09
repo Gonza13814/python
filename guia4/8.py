@@ -7,4 +7,5 @@ def esPrimo(numero):
 
 print(esPrimo(6))
 
-#Me rendi
+print("soy gay")
+
