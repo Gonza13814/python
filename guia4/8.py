@@ -9,3 +9,4 @@ print(esPrimo(6))
 
 print("soy gay")
 
+print("ES GAY")
