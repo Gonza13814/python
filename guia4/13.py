@@ -3,7 +3,7 @@ unitario de dicho producto. Por cada carga debe preguntar si se desea seguir ing
 "¿Deseás ingresar otro artículo? [S/N]". La carga de datos finaliza cuando el usuario lo
 determine. La computadora debe mostrar el monto total del ticket."""
 
-def montoTotal(precio, cantidad):
+"""def montoTotal(precio, cantidad):
     print(f"Su monto parcial es {precio * cantidad}")
 
     pregunta = print(str(input("¿Deseás ingresar otro artículo? [S/N]: ")))
@@ -21,5 +21,23 @@ def montoTotal(precio, cantidad):
         print(f"Su monto total es {total}.")
 
 
-montoTotal(100, 200)
-    
+montoTotal(100, 200)"""
+
+def main():
+    confirmar = ''
+    montoTotal = 0
+    while not (confirmar == 'N' or confirmar == 'n'):
+        cantidad = int(input("ingrese la cantidad: "))
+        precio = int(input("ingrese el precio: "))
+
+        montoTotal += calcularMontoParcial(cantidad,precio)
+        
+        confirmar = str(input("Deseas continuar? si o no: "))
+
+    print(f"El monto total es {montoTotal}")
+
+def calcularMontoParcial(cantidad, precio):
+    return cantidad * precio
+
+main()
+
