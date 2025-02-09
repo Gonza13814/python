@@ -2,3 +2,8 @@ Int = entero
 Float = numero con comas
 Char = caracter
 str =  cadena de texto
+
+git add .
+git commit -m "nashe"
+git push
+git pull
