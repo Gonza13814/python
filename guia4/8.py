@@ -1,12 +1,6 @@
 """8 esPrimo, que devuelva si un número entero dado como parámetro es o no primo. """
 
 def esPrimo(numero):
-<<<<<<< HEAD
-    
- 
-
-print(esPrimo(6))
-=======
     divisoresDelNumero = 0
     for i in range(1, numero + 1):
         if numero % i == 0:
@@ -16,4 +10,4 @@ print(esPrimo(6))
 
 print(esPrimo(13))
 
->>>>>>> 427439bb2cef1fd7663e607265a87430ca541147
+
