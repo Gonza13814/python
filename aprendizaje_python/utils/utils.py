@@ -5,20 +5,24 @@ def solicitarEntero(mensaje):
    return entero
 
 def solicitarFloat(mensaje):
-   """Solicita un float"""
+   float = float(input(mensaje))
+   return float
 
-def solicitarString(mensaje):
-   """Solicita un string"""
-   
 def solicitarEnteroEntre(valorMin, valorMax, mensaje):
-   """Solicita un entero entre dos valores"""
+    valor = int(input(mensaje))
+    while valor not in range (valorMin, valorMax + 1):
+       valor = int(input("ERROR" + mensaje))
+    
+    return valor 
+
+"""def solicitarString(mensaje):
+   Solicita un string
    
 def solicitarFloatEntre(valorMin, valorMax, mensaje):
-    """Solicita un float entre dos valores"""
+    Solicita un float entre dos valores
     
 def confirmarUsuario(mensaje):
-    """Un bucle que al poner S sigue Al poner N termina"""
+    Un bucle que al poner S sigue Al poner N termina"""
    
 
 
-"""Estas son las primeras funciones, a medida del aprendizaje tenemos que completar este archivo"""

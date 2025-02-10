@@ -9,6 +9,72 @@ B)  En cuál turno los choferes son, en promedio, más jóvenes"""
 
 from utils import utils as u
 
-entero = u.solicitarEntero('nice: ')
+CANT_CHOFERES = 3
+BONO_FIJO = 500
 
-print(entero)
+def main(cant, bonoFijo):
+    montoTotal = 0
+    turnoMasJoven = ''
+    
+    edadM, edadT, edadN = 0, 0, 0
+    contM, contT, contN = 0, 0, 0
+    
+    """edades_por_turno = {'M': 0, 'N': 0, 'T': 0}
+    """ 
+    
+    for i in range(cant):
+        edad = u.solicitarEnteroEntre(25, 40, "Ingrese la edad del chofer entre 25 y 40: ")
+        antiguedad = u.solicitarEnteroEntre(5, 30, "Ingrese la antiguedad entre 5 y 30: ")
+        turno = validarTurno()
+        
+        montoParcial = calcularMontoParcial(edad, antiguedad, turno, bonoFijo)
+        montoTotal += montoParcial
+        
+        if turno == 'M':
+            edadM += edad
+            contM += 1
+        if turno == 'N':
+            edadN += edad
+            contN += 1
+        if turno == 'T':
+            edadT += edad
+            contT += 1
+        
+        """edades_por_turno[turno] += edad
+        """
+
+    turnoMasJoven = calcularTurnoMasJoven(edadM, contM, edadN, contN,edadT, contT)
+    print(f"El monto total es {montoTotal}")
+    print(f"El turno con promedio de edad mas joven es {turnoMasJoven}")    
+
+def calcularTurnoMasJoven(edadM, contM, edadN, contN,edadT, contT):
+    promM = edadM / contM if contM > 0 else float('inf')
+    promT = edadT / contT if contT > 0 else float('inf')
+    promN = edadN / contN if contN > 0 else float('inf')
+    
+    if promM < promN and promM < promT:
+        return 'M'
+    elif promN < promT:
+        return 'N'
+    else:
+        return 'T'
+
+def calcularMontoParcial(edad, antiguedad, turno, bonoFijo):
+    montoParcial = bonoFijo
+
+    if antiguedad > (edad / 2):
+        montoParcial *= 1.10
+
+    if turno == 'N':
+        montoParcial *= 1.05
+
+    return montoParcial
+        
+def validarTurno():
+    turno = str(input("Ingrese el turno ('M'|'T'|'N'): "))
+    while turno not in ('M', 'T', 'N'):
+        turno = str(input("Ingrese el turno ('M'|'T'|'N'): "))
+    
+    return turno
+
+main(CANT_CHOFERES, BONO_FIJO)
