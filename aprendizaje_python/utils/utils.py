@@ -16,8 +16,9 @@ def solicitarEnteroEntre(valorMin, valorMax, mensaje):
     return valor 
 
 def solicitarString(mensaje):
-   str = str(input(mensaje))
-   return str
+   string = str(input(mensaje))
+   return string
+
    
 """def solicitarFloatEntre(valorMin, valorMax, mensaje):
     Solicita un float entre dos valores

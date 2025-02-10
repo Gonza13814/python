@@ -16,9 +16,48 @@ B) En cuál turno los choferes son, en promedio, más jóvenes.
     
 from utils import utils as u
 
-for i in range(8):
+def validarTurno():
+    turno = str(input("Ingrese el turno ('M'|'T'|'N'): "))
+    while turno not in ('M', 'T', 'N'):
+        turno = str(input("Ingrese el turno ('M'|'T'|'N'): "))
+    
+    return turno
+
+montoFinal = 0
+montoParcial = 0
+extra = 0
+
+for i in range(3):
     edad = u.solicitarEnteroEntre(25, 40, "Ingrese la edad del chofer (25 a 40): ")
     antiguedad = u.solicitarEnteroEntre(5, 30, "Ingrese la antiguedad (5 a 30): ")
-    turno = 
+    turno = validarTurno()
+
+    extra1 = 0
+    extra2 = 0
+
+    if antiguedad > (edad / 2):
+        extra1 = 500 * 0.1
+    
+    if turno == 'N':
+        extra2 = 500 * 0.05
+    
+    montoParcial = 500 + extra1 + extra2
+
+    montoFinal += montoParcial
+
+print(f"EL monto total de la empresa es de: {montoFinal}. ")
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

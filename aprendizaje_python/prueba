@@ -1,0 +1,64 @@
+from utils import utils as u
+
+"""def solicitarEnteroEntre(valorMin, valorMax, mensaje):
+    valor = int(input(mensaje))
+    while valor not in range (valorMin, valorMax + 1):
+       valor = int(input("ERROR. " + mensaje))
+    
+    return valor 
+"""
+
+
+
+"""def solicitarStringEntre(textoA, textoB, textoC, textoD, textoE, textoF, textoG, textoH, textoI, textoJ, textoK):
+    textoA = str(input(textoA))
+    while not texto"""
+
+from utils import utils as u
+
+def validarTurno():
+    turno = str(input("Ingrese el turno ('M'|'T'|'N'): "))
+    while turno not in ('M', 'T', 'N'):
+        turno = str(input("Ingrese el turno ('M'|'T'|'N'): "))
+    
+    return turno
+
+montoFinal = 0
+montoParcial = 0
+
+def calcularMontoParcial(edad, antiguedad, turno):
+    montoAdicionalFinal = 500
+
+    if antiguedad > (edad / 2):
+        montoAdicionalFinal += 500 * 1.1
+
+    if turno == 'N':
+        montoAdicionalFinal += 500 * 1.05
+    
+    return montoAdicionalFinal
+
+
+for i in range(3):
+    edad = u.solicitarEnteroEntre(25, 40, "Ingrese la edad del chofer (25 a 40): ")
+    antiguedad = u.solicitarEnteroEntre(5, 30, "Ingrese la antiguedad (5 a 30): ")
+    turno = validarTurno()
+    
+    montoParcial = calcularMontoParcial(edad, antiguedad, turno)
+    
+    montoFinal += montoParcial
+
+print(f"El monto final es {montoFinal}. ")
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
