@@ -15,14 +15,12 @@ def solicitarEnteroEntre(valorMin, valorMax, mensaje):
     
     return valor 
 
-"""def solicitarString(mensaje):
-   Solicita un string
+def solicitarString(mensaje):
+   str = str(input(mensaje))
+   return str
    
-def solicitarFloatEntre(valorMin, valorMax, mensaje):
+"""def solicitarFloatEntre(valorMin, valorMax, mensaje):
     Solicita un float entre dos valores
     
 def confirmarUsuario(mensaje):
     Un bucle que al poner S sigue Al poner N termina"""
-   
-
-

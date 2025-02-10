@@ -18,7 +18,7 @@ from utils import utils as u
 
 for i in range(8):
     edad = u.solicitarEnteroEntre(25, 40, "Ingrese la edad del chofer (25 a 40): ")
-
-    
+    antiguedad = u.solicitarEnteroEntre(5, 30, "Ingrese la antiguedad (5 a 30): ")
+    turno = 
 
 
