@@ -11,7 +11,7 @@ def solicitarFloat(mensaje):
 def solicitarEnteroEntre(valorMin, valorMax, mensaje):
     valor = int(input(mensaje))
     while valor not in range (valorMin, valorMax + 1):
-       valor = int(input("ERROR" + mensaje))
+       valor = int(input("ERROR. " + mensaje))
     
     return valor 
 
