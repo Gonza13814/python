@@ -10,9 +10,11 @@ B) En cuál turno los choferes son, en promedio, más jóvenes.
 """
 from utils import utils as u
 
-# A) El monto total que la empresa paga en concepto de bono para todos sus choferes.
-
-turnoM = 0, turnoT = 0, turnoN = 0
+# A) El monto 0total que la empresa paga en concepto de bono para todos sus choferes.
+CANT_CHOFERES = 1
+turnoM = 0
+turnoT = 0
+turnoN = 0
 edadM = 0
 edadT = 0
 edadN = 0
@@ -42,9 +44,16 @@ def calcularMontoParcial(edad, antiguedad, turno):
     
     return montoAdicionalFinal
 
+def encontrarTurnoConPromedioMasJoven(edadPromedioM, edadPromedioT, edadPromedioN):
+    if edadPromedioM < edadPromedioT and edadPromedioM < edadPromedioN:
+        return edadPromedioM, 'M'
+    elif edadPromedioT < edadPromedioM and edadPromedioT < edadPromedioN:
+        return edadPromedioT, 'T'
+    elif edadPromedioN < edadPromedioT and edadPromedioN < edadPromedioM:
+        return edadPromedioN, 'N'
 
 
-for i in range(8):
+for i in range(CANT_CHOFERES):
     edad = u.solicitarEnteroEntre(25, 40, "Ingrese la edad del chofer (25 a 40): ")
     antiguedad = u.solicitarEnteroEntre(5, 30, "Ingrese la antiguedad (5 a 30): ")
     turno = validarTurno()
@@ -66,20 +75,15 @@ for i in range(8):
         edadN += edad
 
 
-edadPromedioM = edadM / turnoM
-edadPromedioT = edadT / turnoT
-edadPromedioN = edadN / turnoN
+edadPromedioM = edadM / turnoM if turnoM > 0 else float('inf')
+edadPromedioT = edadT / turnoT if turnoT > 0 else float('inf')
+edadPromedioN = edadN / turnoN if turnoN > 0 else float('inf')
 
 print(f"El monto final es {montoFinal}. ")
+#print(f"Los choferes mas jovenes estan en el turno {encontrarTurnoConPromedioMasJoven()}")
+edadMasJovenYTurno = encontrarTurnoConPromedioMasJoven(edadPromedioM,edadPromedioT,edadPromedioN)
+print(f"El turno con mas promedio joven es {edadMasJovenYTurno[1]} y es {edadMasJovenYTurno[0]}")
 
-if edadPromedioM < edadPromedioT and edadPromedioM < edadPromedioN:
-    print(f"En el turno mañana los choferes son mas jovenes, con una edad promedio de {edadPromedioM}. ")
-elif edadPromedioT < edadPromedioM and edadPromedioT < edadPromedioN:
-    print(f"En el turno tarde los choferes son mas jovenes, con una edad promedio de {edadPromedioT}. ")
-elif edadPromedioN < edadPromedioT and edadPromedioN < edadPromedioM:
-    print(f"En el turno noche los choferes son mas jovenes, con una edad promedio de {edadPromedioN}. ")
-else:
-    print(f"No hay un turno en especifico en donde los choferes sean más jovenes. ")
 
 
 
