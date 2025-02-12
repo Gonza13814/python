@@ -8,13 +8,18 @@ La computadora debe mostrar, de forma clara y ordenada:
 A) El monto total que la empresa paga en concepto de bono para todos sus choferes.
 B) En cuál turno los choferes son, en promedio, más jóvenes.
 """
-
-"""def infoChoferes(edad, antiguedad, turno):
-    edad = int(input("Ingrese la edad del chofer (25 a 40): "))
-    if edad > 40 or edad < 25:
-        print("Edad incorrecta. Ingrese una edad válida (25 a 40): ")"""
-    
 from utils import utils as u
+
+# A) El monto total que la empresa paga en concepto de bono para todos sus choferes.
+
+turnoM = 0, turnoT = 0, turnoN = 0
+edadM = 0
+edadT = 0
+edadN = 0
+edadPromedioM = 100
+edadPromedioT = 100
+edadPromedioN = 100
+
 
 def validarTurno():
     turno = str(input("Ingrese el turno ('M'|'T'|'N'): "))
@@ -25,27 +30,56 @@ def validarTurno():
 
 montoFinal = 0
 montoParcial = 0
-extra = 0
 
-for i in range(3):
+def calcularMontoParcial(edad, antiguedad, turno):
+    montoAdicionalFinal = 500
+
+    if antiguedad > (edad / 2):
+        montoAdicionalFinal += 500 * 0.1
+    
+    if turno == 'N':
+        montoAdicionalFinal += 500 * 0.05
+    
+    return montoAdicionalFinal
+
+
+
+for i in range(8):
     edad = u.solicitarEnteroEntre(25, 40, "Ingrese la edad del chofer (25 a 40): ")
     antiguedad = u.solicitarEnteroEntre(5, 30, "Ingrese la antiguedad (5 a 30): ")
     turno = validarTurno()
-
-    extra1 = 0
-    extra2 = 0
-
-    if antiguedad > (edad / 2):
-        extra1 = 500 * 0.1
     
-    if turno == 'N':
-        extra2 = 500 * 0.05
+    montoParcial = calcularMontoParcial(edad, antiguedad, turno)
     
-    montoParcial = 500 + extra1 + extra2
-
     montoFinal += montoParcial
 
-print(f"EL monto total de la empresa es de: {montoFinal}. ")
+    if turno == 'M':
+        turnoM += 1
+        edadM += edad
+
+    if turno == 'T':
+        turnoT += 1
+        edadT += edad
+
+    if turno == 'N':
+        turnoN += 1
+        edadN += edad
+
+
+edadPromedioM = edadM / turnoM
+edadPromedioT = edadT / turnoT
+edadPromedioN = edadN / turnoN
+
+print(f"El monto final es {montoFinal}. ")
+
+if edadPromedioM < edadPromedioT and edadPromedioM < edadPromedioN:
+    print(f"En el turno mañana los choferes son mas jovenes, con una edad promedio de {edadPromedioM}. ")
+elif edadPromedioT < edadPromedioM and edadPromedioT < edadPromedioN:
+    print(f"En el turno tarde los choferes son mas jovenes, con una edad promedio de {edadPromedioT}. ")
+elif edadPromedioN < edadPromedioT and edadPromedioN < edadPromedioM:
+    print(f"En el turno noche los choferes son mas jovenes, con una edad promedio de {edadPromedioN}. ")
+else:
+    print(f"No hay un turno en especifico en donde los choferes sean más jovenes. ")
 
 
 
